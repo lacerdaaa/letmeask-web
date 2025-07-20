@@ -1,14 +1,16 @@
-import { Button } from "@/components/ui/button";
+import { Navigate, useParams } from "react-router-dom"
 
 export function Room() {
+
+    const params = useParams<{ id: string }>();
+
+    if (!params.id) {
+        return <Navigate to="/" replace />
+    }
     return (
         <div>
-            <h1>Room Page</h1>
-            <p>This is the room page where you can join or create a room.</p>
-            <form>
-                <input type="text" placeholder="Enter room code" />
-                <Button type="submit">Join Room</Button>
-            </form>
+            <h1>Room Details</h1>
+            <p>Room ID: {params.id}</p>
         </div>
     )
 }
